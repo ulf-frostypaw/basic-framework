@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Redirigir a la raíz si no es la solicitud principal
+RewriteCond %{REQUEST_URI} !^/$
+RewriteRule ^(.*)$ / [L,R=301]
+
+# Enrutamiento a index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?route=$1 [QSA,L]
